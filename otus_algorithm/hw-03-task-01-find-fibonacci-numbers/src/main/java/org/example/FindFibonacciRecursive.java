@@ -14,6 +14,6 @@ public class FindFibonacciRecursive {
         if (position == 0 || position == 1)
             return position.toString();
 
-        return SumStrings.sumStrings(find(position - 1), find(position - 2));
+        return SumStrings.sumStrings(find(position - 2), find(position - 1));
     }
 }
