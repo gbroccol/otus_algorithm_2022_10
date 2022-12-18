@@ -16,8 +16,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-
-class FindFibonacciIterativeTest {
+class FindFibonacciRecursiveTest {
 
     private static Set<Path> getListFiles(String dir) throws IOException {
         try (Stream<Path> stream = Files.list(Paths.get(dir))) {
@@ -31,7 +30,7 @@ class FindFibonacciIterativeTest {
     private static Stream<Arguments> argumentsStream() throws IOException {
 
         String testsPath = "src/test/resources";
-        Set<Path> listFiles = FindFibonacciIterativeTest.getListFiles(testsPath);
+        Set<Path> listFiles = FindFibonacciRecursiveTest.getListFiles(testsPath);
 
         int testsCount = listFiles.size() / 2;
 
@@ -65,12 +64,15 @@ class FindFibonacciIterativeTest {
                 arguments.get(6),
                 arguments.get(7),
                 arguments.get(8),
-                arguments.get(9));
+                arguments.get(9),
+                arguments.get(10),
+                arguments.get(11),
+                arguments.get(12));
     }
 
     @ParameterizedTest
     @MethodSource("argumentsStream")
-    public void testIterativeMethod(String position, String expected) {
-        Assertions.assertEquals(expected, FindFibonacciIterative.find(Integer.parseInt(position)));
+    public void testRecursiveMethod(String position, String expected) {
+        Assertions.assertEquals(expected, FindFibonacciRecursive.find(Integer.parseInt(position)));
     }
 }
